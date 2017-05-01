@@ -38,6 +38,7 @@
         "ext-mbstring": "*",
         "ext-mcrypt": "*",
         "league/csv": "~7.1@dev",
+        "laravel/lumen-framework": "5.4.*",
         "ddeboer/data-import": "dev-master",
         "symfony/property-access": "~2.5",
         "league/event": "^2.2@dev",
@@ -73,12 +74,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Ushahidi\\": "src/"
+            "Ushahidi\\": "src/",
+            "Ushahidi\\App\\": "app/"
         }
     },
     "autoload-dev": {
         "classmap": [
-            "tests/"
+            "tests/",
+            "database/"
         ]
     },
     "minimum-stability": "dev",
@@ -110,6 +113,9 @@
             "phpunit --no-coverage",
             "phpspec run --no-code-generation",
             "behat --strict --profile ci"
+        ],
+        "post-root-package-install": [
+            "php -r \"copy('.env.example', '.env');\""
         ]
     }
 }
